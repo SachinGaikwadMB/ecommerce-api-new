@@ -3,6 +3,7 @@ package com.mb.api.configs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -59,6 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	{
 		http.csrf().disable()
 		.authorizeRequests()
+        .antMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
 		.antMatchers("/api/v1/auth/**").permitAll()
 		//.antMatchers("/api/v1/auth/signup/user").permitAll()
 		//.antMatchers("/api/v1/auth/signup/admin").permitAll()
